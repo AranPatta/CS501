@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Calculator V1</string>
+    <string name="add">Addition</string>
+    <string name="sub">Subtraction</string>
+    <string name="mul">Multiplication</string>
+    <string name="div">Division</string>
+    <string name="cal">Calculate</string>
+    <string name="blank">    </string>
+</resources>
