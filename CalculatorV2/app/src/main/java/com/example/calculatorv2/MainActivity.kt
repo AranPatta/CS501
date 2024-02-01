@@ -98,32 +98,46 @@ class MainActivity : AppCompatActivity() {
             print(tokens)
 
             for (token in tokens) {
-                Log.d("Button", token)
                 if (op != null){
                     val num = token.toFloatOrNull() ?: 0f
                     when (op){
                         "+" -> {
                             ans = ans + num
+                            op = null
                         }
                         "-" -> {
                             ans = ans - num
+                            op = null
                         }
                         "*" -> {
                             ans = ans * num
+                            op = null
                         }
                         "\\" -> {
                             if (num == 0f){
                                 display = "0"
                                 ans = 0f
+                                op = null
                                 val zero = Toast.makeText(this, "Divide by zero not allowed", Toast.LENGTH_SHORT)
                                 zero.show()
                                 findViewById<EditText>(R.id.ans).setText(display)
                             }else{
                                 ans = ans / num
+                                op = null
                             }
                         }
                         "sqrt" -> {
-                            ans = sqrt(ans)
+                            if (ans < 0f){
+                                display = "0"
+                                ans = 0f
+                                op = null
+                                val imagine = Toast.makeText(this, "Imaginary number not allowed", Toast.LENGTH_SHORT)
+                                imagine.show()
+                                findViewById<EditText>(R.id.ans).setText(display)
+                            }else{
+                                ans = sqrt(ans)
+                                op = null
+                            }
                         }
                     }
                 }
