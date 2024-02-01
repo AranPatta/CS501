@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         var display : String = "0"
         var ans : Float
 
-        val toast = Toast.makeText(this, "sqrt(2 + 2) -> 2 + 2 sqrt. Add spaces between operations", Toast.LENGTH_LONG)
-        toast.show()
+        val guide = Toast.makeText(this, "sqrt(2 + 2) -> 2 + 2 sqrt.\n Add spaces between operations", Toast.LENGTH_LONG)
+        guide.show()
 
         findViewById<Button>(R.id.button0).setOnClickListener{
             display = display.plus("0")
@@ -115,8 +115,8 @@ class MainActivity : AppCompatActivity() {
                             if (num == 0f){
                                 display = "0"
                                 ans = 0f
-                                val toast = Toast.makeText(this, "Divide by zero not allowed", Toast.LENGTH_SHORT)
-                                toast.show()
+                                val zero = Toast.makeText(this, "Divide by zero not allowed", Toast.LENGTH_SHORT)
+                                zero.show()
                                 findViewById<EditText>(R.id.ans).setText(display)
                             }else{
                                 ans = ans / num
@@ -136,8 +136,9 @@ class MainActivity : AppCompatActivity() {
                 else{
                     display = "0"
                     ans = 0f
-                    val toast = Toast.makeText(this, "Incorrect format", Toast.LENGTH_SHORT)
-                    toast.show()
+                    val format = Toast.makeText(this, "Incorrect format", Toast.LENGTH_SHORT)
+                    format.show()
+                    guide.show()
                     findViewById<EditText>(R.id.ans).setText(display)
                 }
             }
