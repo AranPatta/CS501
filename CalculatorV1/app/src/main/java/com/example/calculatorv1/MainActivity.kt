@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         var mul : Boolean = false
         var div : Boolean = false
 
-        findViewById<RadioGroup>(R.id.radio_group).setOnCheckedChangeListener { group, checkedId ->
+        findViewById<RadioGroup>(R.id.radio_group).setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radio_add -> {
                     add = true
@@ -53,26 +53,13 @@ class MainActivity : AppCompatActivity() {
 
         var num1 : Float = 0f
         var num2 : Float = 0f
-        findViewById<EditText>(R.id.NumberDecimal).addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                num1 = s.toString().toFloatOrNull() ?: 0f
-            }
-        })
-
-        findViewById<EditText>(R.id.NumberDecimal2).addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                num2 = s.toString().toFloatOrNull() ?: 0f
-            }
-        })
-
         var ans : String = "0"
+
         findViewById<Button>(R.id.calc).setOnClickListener {
+
+            num1 = findViewById<EditText>(R.id.NumberDecimal).getText().toString().toFloatOrNull() ?: 0f
+            num2 = findViewById<EditText>(R.id.NumberDecimal2).getText().toString().toFloatOrNull() ?: 0f
+
             when {
                 add -> {
                     ans = (num1 + num2).toString()
